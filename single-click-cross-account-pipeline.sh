@@ -1,20 +1,32 @@
 #!/usr/bin/env bash
-echo -n "Enter ToolsAccount > "
-read ToolsAccount
+#echo -n "Enter ToolsAccount > "
+#read ToolsAccount
 echo -n "Enter ToolsAccount ProfileName for AWS Cli operations> "
 read ToolsAccountProfile
-echo -n "Enter Dev Account > "
-read DevAccount
+ToolsAccount=$(aws sts get-caller-identity --profile ${ToolsAccountProfile} | jq ".Account" | sed  s/\"//g)
+echo "Tools Account : ${ToolsAccount}"
+
+
+#echo -n "Enter Dev Account > "
+#read DevAccount
 echo -n "Enter DevAccount ProfileName for AWS Cli operations> "
 read DevAccountProfile
-echo -n "Enter Test Account > "
-read TestAccount
-echo -n "Enter TestAccount ProfileName for AWS Cli operations> "
+DevAccount=$(aws sts get-caller-identity --profile ${DevAccountProfile} | jq ".Account" | sed  s/\"//g)
+echo "DevAccount : ${DevAccount}"
+
+#echo -n "Enter Test Account > "
+#read TestAccount
+echo -n "Enter QAAccount ProfileName for AWS Cli operations> "
 read TestAccountProfile
-echo -n "Enter Prod Account > "
-read ProdAccount
+TestAccount=$(aws sts get-caller-identity --profile ${TestAccountProfile} | jq ".Account" | sed  s/\"//g)
+echo "QAAccount : ${TestAccount}"
+
+#echo -n "Enter Prod Account > "
+#read ProdAccount
 echo -n "Enter ProdAccount ProfileName for AWS Cli operations> "
 read ProdAccountProfile
+ProdAccount=$(aws sts get-caller-identity --profile ${ProdAccountProfile} | jq ".Account" | sed  s/\"//g)
+echo "ProdAccount : ${ProdAccount}"
 
 aws cloudformation deploy --stack-name pre-reqs --template-file ToolsAcct/pre-reqs.yaml --parameter-overrides DevAccount=$DevAccount TestAccount=$TestAccount ProductionAccount=$ProdAccount --profile $ToolsAccountProfile
 echo -n "Enter S3 Bucket created from above > "

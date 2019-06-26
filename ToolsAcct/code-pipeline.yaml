@@ -209,6 +209,7 @@ Resources:
     Properties:
       RoleArn: !GetAtt PipeLineRole.Arn
       Name: !Ref AWS::StackName
+      RestartExecutionOnUpdate: True
       Stages:
         - Name: Source
           Actions:

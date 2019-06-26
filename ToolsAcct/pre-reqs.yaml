@@ -84,7 +84,23 @@ Resources:
   ArtifactBucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
-
+    Properties: 
+      BucketEncryption:
+        ServerSideEncryptionConfiguration: 
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: aws:kms    
+      LifecycleConfiguration:
+        Rules:
+        - Id: "ToGlacierAfter30AndDeleteAfter60"
+          AbortIncompleteMultipartUpload:
+            DaysAfterInitiation: 7
+          ExpirationInDays: 60
+          Status: Enabled
+          Transitions:
+            - StorageClass: GLACIER
+              TransitionInDays: 30
+      VersioningConfiguration: 
+         Status: Enabled
 Outputs:
   CMK:
     Value: !GetAtt [KMSKey,Arn]
