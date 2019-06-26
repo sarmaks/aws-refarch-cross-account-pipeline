@@ -15,28 +15,28 @@ is securely handled by [AWS CodePipeline](code-pipeline-url).
 1. Update your ~/.aws/config with aws-profile information
 
 ```
-[reinforce-ssd-336-tools]
+[profile reinforce-ssd-336-tools]
 aws_access_key_id = xxx
 aws_secret_access_key = xxx
 aws_session_token = xxxx
 output = json
 region = us-east-1
 
-[reinforce-ssd-336-dev]
+[profile reinforce-ssd-336-dev]
 aws_access_key_id = xxx
 aws_secret_access_key = xxx
 aws_session_token = xxxx
 output = json
 region = us-east-1
 
-[reinforce-ssd-336-qa]
+[profile reinforce-ssd-336-qa]
 aws_access_key_id = xxx
 aws_secret_access_key = xxx
 aws_session_token = xxxx
 output = json
 region = us-east-1
 
-[reinforce-ssd-336-prod]
+[profile reinforce-ssd-336-prod]
 aws_access_key_id = xxx
 aws_secret_access_key = xxx
 aws_session_token = xxxx
