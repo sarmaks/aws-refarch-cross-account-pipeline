@@ -77,7 +77,7 @@ This creates a directory named `aws-pipeline-to-service-catalog` in your current
 From your terminal application, execute the following command:
 
 ```console
-git remote add AWSCodeCommit HTTP_CLONE_URL_FROM_STEP_2
+git remote add AWSCodeCommit https://git-codecommit.us-east-1.amazonaws.com/v1/repos/sample-lambda
 ```
 
 Follow the instructions [here](http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html) for local git setup required to push code to CodeCommit repository.
