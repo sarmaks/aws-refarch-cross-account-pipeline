@@ -11,7 +11,15 @@ is securely handled by [AWS CodePipeline](code-pipeline-url).
 ## Running the sample
 
 1. Clone the this repo
-1. Login to: https://sarmaks-lz.awsapps.com/start#/ with credentials given to you during the lab
+1. Login to: https://sarmaks-lz.awsapps.com/start#/ with credentials given to you during the session. You can use one of the following as user-name and pick the number assigned to during the session:
+```
+    sarmaks+reinforce-1@amazon.com
+    sarmaks+reinforce-2@amazon.com
+    sarmaks+reinforce-3@amazon.com
+    sarmaks+reinforce-4@amazon.com
+    sarmaks+reinforce-5@amazon.com
+    sarmaks+reinforce-6@amazon.com
+```
 1. Update your ~/.aws/config with aws-profile information
 
 ```
