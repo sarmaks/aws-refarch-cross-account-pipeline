@@ -3,7 +3,7 @@
 #read ToolsAccount
 echo -n "Enter ToolsAccount ProfileName for AWS Cli operations> "
 read ToolsAccountProfile
-ToolsAccount=$(aws sts get-caller-identity --profile ${ToolsAccountProfile} --query 'Account' | sed  s/\"//g)
+ToolsAccount=$(aws sts get-caller-identity --profile ${ToolsAccountProfile} --query 'Account' --output text | sed  s/\"//g)
 echo "Tools Account : ${ToolsAccount}"
 
 
@@ -11,21 +11,21 @@ echo "Tools Account : ${ToolsAccount}"
 #read DevAccount
 echo -n "Enter DevAccount ProfileName for AWS Cli operations> "
 read DevAccountProfile
-DevAccount=$(aws sts get-caller-identity --profile ${DevAccountProfile} --query 'Account' | sed  s/\"//g)
+DevAccount=$(aws sts get-caller-identity --profile ${DevAccountProfile} --query 'Account' --output text | sed  s/\"//g)
 echo "DevAccount : ${DevAccount}"
 
 #echo -n "Enter Test Account > "
 #read TestAccount
 echo -n "Enter QAAccount ProfileName for AWS Cli operations> "
 read TestAccountProfile
-TestAccount=$(aws sts get-caller-identity --profile ${TestAccountProfile} --query 'Account' | sed  s/\"//g)
+TestAccount=$(aws sts get-caller-identity --profile ${TestAccountProfile} --query 'Account' --output text | sed  s/\"//g)
 echo "QAAccount : ${TestAccount}"
 
 #echo -n "Enter Prod Account > "
 #read ProdAccount
 echo -n "Enter ProdAccount ProfileName for AWS Cli operations> "
 read ProdAccountProfile
-ProdAccount=$(aws sts get-caller-identity --profile ${ProdAccountProfile} --query 'Account' | sed  s/\"//g)
+ProdAccount=$(aws sts get-caller-identity --profile ${ProdAccountProfile} --query 'Account' --output text | sed  s/\"//g)
 echo "ProdAccount : ${ProdAccount}"
 
 aws cloudformation deploy --stack-name pre-reqs --template-file ToolsAcct/pre-reqs.yaml --parameter-overrides DevAccount=$DevAccount TestAccount=$TestAccount ProductionAccount=$ProdAccount --profile $ToolsAccountProfile
